@@ -84,22 +84,72 @@ export const InvestorDashboard: React.FC = () => {
             <Filter size={18} className="text-gray-500" />
             <span className="text-sm font-medium text-gray-700">Filter by:</span>
             
-            <div className="flex flex-wrap gap-2">
-              {industries.map(industry => (
-                <Badge
-                  key={industry}
-                  variant={selectedIndustries.includes(industry) ? 'primary' : 'gray'}
-                  className="cursor-pointer"
-                  onClick={() => toggleIndustry(industry)}
-                >
-                  {industry}
-                </Badge>
-              ))}
-            </div>
+            ```tsx id="bg9k21"
+<div
+  className="
+    flex flex-wrap gap-3 p-4
+
+    rounded-2xl
+
+    bg-[#0a0f1f]/60
+    backdrop-blur-xl
+
+    border border-white/10
+
+    shadow-[0_0_40px_rgba(0,0,0,0.6)]
+
+    relative overflow-hidden
+  "
+>
+  {/* Subtle animated glow background */}
+  <div
+    className="
+      absolute inset-0
+
+      bg-gradient-to-br
+      from-cyan-500/10
+      via-transparent
+      to-purple-500/10
+
+      opacity-60
+      animate-pulse
+    "
+  />
+
+  {/* Floating grid noise layer */}
+  <div
+    className="
+      absolute inset-0
+      opacity-[0.04]
+      bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_0)]
+      [background-size:20px_20px]
+    "
+  />
+
+  {/* Content */}
+  <div className="relative z-10 flex flex-wrap gap-2">
+    {industries.map((industry) => (
+      <Badge
+        key={industry}
+        variant={
+          selectedIndustries.includes(industry)
+            ? 'primary'
+            : 'gray'
+        }
+        className="cursor-pointer transition-transform hover:scale-105"
+        onClick={() => toggleIndustry(industry)}
+      >
+        {industry}
+      </Badge>
+    ))}
+  </div>
+</div>
+```
+
           </div>
         </div>
       </div>
-      
+    
       {/* Stats summary */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="bg-primary-50 border border-primary-100">

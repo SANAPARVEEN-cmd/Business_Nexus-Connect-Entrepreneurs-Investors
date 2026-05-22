@@ -82,30 +82,40 @@ export const SettingsPage: React.FC = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input
-                  label="Full Name"
-                  defaultValue={user.name}
-                />
-                
-                <Input
-                  label="Email"
-                  type="email"
-                  defaultValue={user.email}
-                />
-                
-                <Input
-                  label="Role"
-                  value={user.role}
-                  disabled
-                />
-                
-                <Input
-                  label="Location"
-                  defaultValue="San Francisco, CA"
-                />
-              </div>
-              
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  
+  <Input
+    label="Full Name"
+    defaultValue={user.name}
+    placeholder="Enter full name"
+    fullWidth
+  />
+
+  <Input
+    label="Email"
+    type="email"
+    defaultValue={user.email}
+    placeholder="Enter email address"
+    fullWidth
+  />
+
+  <Input
+    label="Role"
+    value={user.role}
+    disabled
+    fullWidth
+  />
+
+  <Input
+    label="Location"
+    defaultValue="San Francisco, CA"
+    placeholder="Enter location"
+    fullWidth
+  />
+
+</div>
+
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Bio

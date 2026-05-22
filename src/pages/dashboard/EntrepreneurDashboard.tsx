@@ -118,9 +118,9 @@ export const EntrepreneurDashboard: React.FC = () => {
         {/* Collaboration requests */}
         <div className="lg:col-span-2 space-y-4">
           <Card>
-            <CardHeader className="flex justify-between items-center">
+            <CardHeader className="min-h-screen bg-[#0a0f1f] flex items-center justify-center">
               <h2 className="text-lg font-medium text-gray-900">Collaboration Requests</h2>
-              <Badge variant="primary">{pendingRequests.length} pending</Badge>
+              <Badge variant="warning">{pendingRequests.length} pending</Badge>
             </CardHeader>
             
             <CardBody>
