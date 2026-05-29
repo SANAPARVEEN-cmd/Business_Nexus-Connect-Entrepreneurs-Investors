@@ -9,26 +9,24 @@ export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
+
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
-  
-  // User dashboard route based on role
-  const dashboardRoute = user?.role === 'entrepreneur' 
-    ? '/dashboard/entrepreneur' 
+
+  const dashboardRoute = user?.role === 'entrepreneur'
+    ? '/dashboard/entrepreneur'
     : '/dashboard/investor';
-  
-  // User profile route based on role and ID
-  const profileRoute = user 
-    ? `/profile/${user.role}/${user.id}` 
+
+  const profileRoute = user
+    ? `/profile/${user.role}/${user.id}`
     : '/login';
-  
+
   const navLinks = [
     {
       icon: user?.role === 'entrepreneur' ? <Building2 size={18} /> : <CircleDollarSign size={18} />,
@@ -49,61 +47,59 @@ export const Navbar: React.FC = () => {
       icon: <User size={18} />,
       text: 'Profile',
       path: profileRoute,
-    }
+    },
   ];
-  
+
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-slate-950/90 backdrop-blur-2xl border-b border-slate-800 shadow-[0_10px_80px_rgba(15,23,42,0.25)] z-20 sticky top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          {/* Logo and brand */}
+        <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary-600 rounded-md flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                  <path d="M20 7H4C2.89543 7 2 7.89543 2 9V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V9C22 7.89543 21.1046 7 20 7Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-3xl bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-500 shadow-lg shadow-cyan-500/20 flex items-center justify-center">
+                <span className="text-white text-sm font-bold">BN</span>
               </div>
-              <span className="text-lg font-bold text-gray-900">Business Nexus</span>
+              <div>
+                <p className="text-base font-semibold text-slate-100">Business Nexus</p>
+                <p className="text-xs text-slate-500">Investor + Startup Network</p>
+              </div>
             </Link>
           </div>
-          
-          {/* Desktop navigation */}
-          <div className="hidden md:flex md:items-center md:ml-6">
+
+          <div className="hidden md:flex md:items-center md:space-x-2">
             {user ? (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
                 {navLinks.map((link, index) => (
                   <Link
                     key={index}
                     to={link.path}
-                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+                    className="inline-flex items-center px-3 py-2 text-sm font-medium text-slate-300 rounded-2xl hover:text-cyan-300 hover:bg-slate-900/70 transition duration-200"
                   >
-                    <span className="mr-2">{link.icon}</span>
+                    <span className="mr-2 text-cyan-300">{link.icon}</span>
                     {link.text}
                   </Link>
                 ))}
-                
-                <Button 
-                  variant="ghost"
+
+                <Button
+                  variant="outline"
                   onClick={handleLogout}
-                  leftIcon={<LogOut size={18} />}
+                  className="text-slate-200"
                 >
                   Logout
                 </Button>
-                
-                <Link to={profileRoute} className="flex items-center space-x-2 ml-2">
+
+                <Link to={profileRoute} className="flex items-center space-x-3 ml-2 bg-slate-900/70 px-3 py-2 rounded-2xl hover:bg-slate-900 transition">
                   <Avatar
                     src={user.avatarUrl}
                     alt={user.name}
                     size="sm"
                     status={user.isOnline ? 'online' : 'offline'}
                   />
-                  <span className="text-sm font-medium text-gray-700">{user.name}</span>
+                  <span className="text-sm font-medium text-slate-100">{user.name}</span>
                 </Link>
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
                 <Link to="/login">
                   <Button variant="outline">Log in</Button>
                 </Link>
@@ -113,30 +109,25 @@ export const Navbar: React.FC = () => {
               </div>
             )}
           </div>
-          
-          {/* Mobile menu button */}
+
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-50 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-full text-slate-300 hover:text-cyan-300 hover:bg-slate-900/70 focus:outline-none"
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <X className="block h-6 w-6" />
-              ) : (
-                <Menu className="block h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
-      
-      {/* Mobile menu */}
+
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 animate-fade-in">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-slate-950/95 border-t border-slate-800 animate-fade-in">
+          <div className="px-4 py-4 space-y-3">
             {user ? (
               <>
-                <div className="flex items-center space-x-3 px-3 py-2">
+                <div className="flex items-center gap-3 px-3 py-2 rounded-3xl bg-slate-900/80">
                   <Avatar
                     src={user.avatarUrl}
                     alt={user.name}
@@ -144,50 +135,42 @@ export const Navbar: React.FC = () => {
                     status={user.isOnline ? 'online' : 'offline'}
                   />
                   <div>
-                    <p className="text-sm font-medium text-gray-800">{user.name}</p>
-                    <p className="text-xs text-gray-500 capitalize">{user.role}</p>
+                    <p className="text-sm font-semibold text-slate-100">{user.name}</p>
+                    <p className="text-xs text-slate-500 capitalize">{user.role}</p>
                   </div>
                 </div>
-                
-                <div className="border-t border-gray-200 pt-2">
+
+                <div className="space-y-1">
                   {navLinks.map((link, index) => (
                     <Link
                       key={index}
                       to={link.path}
-                      className="flex items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md"
+                      className="flex items-center gap-3 px-3 py-3 rounded-2xl text-slate-300 hover:text-cyan-300 hover:bg-slate-900/70 transition"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <span className="mr-3">{link.icon}</span>
+                      <span className="text-cyan-300">{link.icon}</span>
                       {link.text}
                     </Link>
                   ))}
-                  
+
                   <button
                     onClick={() => {
                       handleLogout();
                       setIsMenuOpen(false);
                     }}
-                    className="flex w-full items-center px-3 py-2 text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md"
+                    className="flex w-full items-center gap-3 px-3 py-3 rounded-2xl text-slate-300 hover:text-cyan-300 hover:bg-slate-900/70 transition"
                   >
-                    <LogOut size={18} className="mr-3" />
+                    <LogOut size={18} />
                     Logout
                   </button>
                 </div>
               </>
             ) : (
-              <div className="flex flex-col space-y-2 px-3 py-2">
-                <Link 
-                  to="/login" 
-                  className="w-full"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+              <div className="space-y-3">
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="outline" fullWidth>Log in</Button>
                 </Link>
-                <Link 
-                  to="/register" 
-                  className="w-full"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link to="/register" onClick={() => setIsMenuOpen(false)}>
                   <Button fullWidth>Sign up</Button>
                 </Link>
               </div>

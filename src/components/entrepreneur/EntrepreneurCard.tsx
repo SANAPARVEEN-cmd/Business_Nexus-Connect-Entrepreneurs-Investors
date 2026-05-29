@@ -44,8 +44,8 @@ export const EntrepreneurCard: React.FC<EntrepreneurCardProps> = ({
           />
           
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">{entrepreneur.name}</h3>
-            <p className="text-sm text-gray-500 mb-2">{entrepreneur.startupName}</p>
+            <h3 className="text-lg font-semibold text-slate-100 mb-1">{entrepreneur.name}</h3>
+            <p className="text-sm text-slate-400 mb-2">{entrepreneur.startupName}</p>
             
             <div className="flex flex-wrap gap-2 mb-3">
               <Badge variant="primary" size="sm">{entrepreneur.industry}</Badge>
@@ -56,19 +56,19 @@ export const EntrepreneurCard: React.FC<EntrepreneurCardProps> = ({
         </div>
         
         <div className="mt-3">
-          <h4 className="text-sm font-medium text-gray-900 mb-1">Pitch Summary</h4>
-          <p className="text-sm text-gray-600 line-clamp-3">{entrepreneur.pitchSummary}</p>
+          <h4 className="text-sm font-medium text-slate-100 mb-1">Pitch Summary</h4>
+          <p className="text-sm text-slate-300 line-clamp-3">{entrepreneur.pitchSummary}</p>
         </div>
         
         <div className="mt-3 flex justify-between items-center">
           <div>
-            <span className="text-xs text-gray-500">Funding Need</span>
-            <p className="text-sm font-medium text-gray-900">{entrepreneur.fundingNeeded}</p>
+            <span className="text-xs text-slate-400">Funding Need</span>
+            <p className="text-sm font-medium text-slate-100">{entrepreneur.fundingNeeded}</p>
           </div>
           
           <div>
-            <span className="text-xs text-gray-500">Team Size</span>
-            <p className="text-sm font-medium text-gray-900">{entrepreneur.teamSize} people</p>
+            <span className="text-xs text-slate-400">Team Size</span>
+            <p className="text-sm font-medium text-slate-100">{entrepreneur.teamSize} people</p>
           </div>
         </div>
       </CardBody>

@@ -18,6 +18,7 @@ interface BadgeProps {
   size?: BadgeSize;
   rounded?: boolean;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const Badge: React.FC<BadgeProps> = ({
@@ -26,6 +27,7 @@ export const Badge: React.FC<BadgeProps> = ({
   size = 'md',
   rounded = true,
   className = '',
+  onClick,
 }) => {
   const variants = {
     primary: {
@@ -71,10 +73,10 @@ export const Badge: React.FC<BadgeProps> = ({
     },
 
     gray: {
-      gradient: 'from-slate-400 to-slate-600',
-      text: 'text-gray-900',
-      bg: 'bg-gray-200/90',
-      dot: 'bg-gray-900',
+      gradient: 'from-slate-500 to-slate-700',
+      text: 'text-slate-200',
+      bg: 'bg-slate-800/80',
+      dot: 'bg-slate-200',
     },
   };
 
@@ -85,7 +87,10 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <div className={`relative inline-flex group ${className}`}>
+    <div
+      className={`relative inline-flex group ${className}`}
+      onClick={onClick}
+    >
       {/* Controlled Glow */}
       <div
         className={`

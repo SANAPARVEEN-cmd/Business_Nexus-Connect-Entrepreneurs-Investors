@@ -3,9 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      animation:
-       {
-         'spin-slow': 'spin 8s linear infinite',
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-in': 'slideIn 0.3s ease-out',
       },
 
       colors: {
@@ -66,10 +67,6 @@ export default {
       },
       fontFamily: {
         sans: ['Inter var', 'sans-serif'],
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-in': 'slideIn 0.3s ease-out',
       },
       keyframes: {
         fadeIn: {

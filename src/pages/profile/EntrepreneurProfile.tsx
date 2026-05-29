@@ -33,10 +33,10 @@ export const EntrepreneurProfile: React.FC = () => {
   if (!entrepreneur || entrepreneur.role !== "entrepreneur") {
     return (
       <div className="text-center py-12">
-        <h2 className="text-2xl font-bold text-gray-900">
+        <h2 className="text-2xl font-bold text-slate-100">
           Entrepreneur not found
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p className="text-slate-400 mt-2">
           The entrepreneur profile you're looking for doesn't exist or has been
           removed.
         </p>
@@ -89,10 +89,10 @@ export const EntrepreneurProfile: React.FC = () => {
             />
 
             <div className="mt-4 sm:mt-0 text-center sm:text-left">
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-slate-100">
                 {entrepreneur.name}
               </h1>
-              <p className="text-gray-600 flex items-center justify-center sm:justify-start mt-1">
+              <p className="text-slate-400 flex items-center justify-center sm:justify-start mt-1">
                 <Building2 size={16} className="mr-1" />
                 Founder at {entrepreneur.startupName}
               </p>
@@ -156,45 +156,45 @@ export const EntrepreneurProfile: React.FC = () => {
           {/* About */}
           <Card>
             <CardHeader>
-              <h2 className="text-lg font-medium text-gray-900">About</h2>
+              <h2 className="text-lg font-medium text-slate-100">About</h2>
             </CardHeader>
             <CardBody>
-              <p className="text-gray-700">{entrepreneur.bio}</p>
+              <p className="text-slate-300">{entrepreneur.bio}</p>
             </CardBody>
           </Card>
 
           {/* Startup Description */}
           <Card>
             <CardHeader>
-              <h2 className="text-lg font-medium text-gray-900">
+              <h2 className="text-lg font-medium text-slate-100">
                 Startup Overview
               </h2>
             </CardHeader>
             <CardBody>
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-md font-medium text-gray-900">
+                  <h3 className="text-md font-medium text-slate-100">
                     Problem Statement
                   </h3>
-                  <p className="text-gray-700 mt-1">
+                  <p className="text-slate-300 mt-1">
                     {entrepreneur?.pitchSummary?.split(".")[0]}.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-md font-medium text-gray-900">
+                  <h3 className="text-md font-medium text-slate-100">
                     Solution
                   </h3>
-                  <p className="text-gray-700 mt-1">
+                  <p className="text-slate-300 mt-1">
                     {entrepreneur.pitchSummary}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-md font-medium text-gray-900">
+                  <h3 className="text-md font-medium text-slate-100">
                     Market Opportunity
                   </h3>
-                  <p className="text-gray-700 mt-1">
+                  <p className="text-slate-300 mt-1">
                     The {entrepreneur.industry} market is experiencing
                     significant growth, with a projected CAGR of 14.5% through
                     2027. Our solution addresses key pain points in this
@@ -203,10 +203,10 @@ export const EntrepreneurProfile: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-md font-medium text-gray-900">
+                  <h3 className="text-md font-medium text-slate-100">
                     Competitive Advantage
                   </h3>
-                  <p className="text-gray-700 mt-1">
+                  <p className="text-slate-300 mt-1">
                     Unlike our competitors, we offer a unique approach that
                     combines innovative technology with deep industry expertise,
                     resulting in superior outcomes for our customers.
@@ -219,8 +219,8 @@ export const EntrepreneurProfile: React.FC = () => {
           {/* Team */}
           <Card>
             <CardHeader className="flex justify-between items-center">
-              <h2 className="text-lg font-medium text-gray-900">Team</h2>
-              <span className="text-sm text-gray-500">
+              <h2 className="text-lg font-medium text-slate-100">Team</h2>
+              <span className="text-sm text-slate-400">
                 {entrepreneur.teamSize} members
               </span>
             </CardHeader>
@@ -234,10 +234,10 @@ export const EntrepreneurProfile: React.FC = () => {
                     className="mr-3"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       {entrepreneur.name}
                     </h3>
-                    <p className="text-xs text-gray-500">Founder & CEO</p>
+                    <p className="text-xs text-slate-500">Founder & CEO</p>
                   </div>
                 </div>
 
@@ -249,10 +249,10 @@ export const EntrepreneurProfile: React.FC = () => {
                     status="online"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       Alex Johnson
                     </h3>
-                    <p className="text-xs text-gray-500">CTO</p>
+                    <p className="text-xs text-slate-500">CTO</p>
                   </div>
                 </div>
 
@@ -264,16 +264,16 @@ export const EntrepreneurProfile: React.FC = () => {
                     status="online"
                   />
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       Jessica Chen
                     </h3>
-                    <p className="text-xs text-gray-500">Head of Product</p>
+                    <p className="text-xs text-slate-500">Head of Product</p>
                   </div>
                 </div>
 
                 {entrepreneur.teamSize > 3 && (
                   <div className="flex items-center justify-center p-3 border border-dashed border-gray-200 rounded-md">
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-slate-400">
                       + {entrepreneur.teamSize - 3} more team members
                     </p>
                   </div>
@@ -288,38 +288,38 @@ export const EntrepreneurProfile: React.FC = () => {
           {/* Funding Details */}
           <Card>
             <CardHeader>
-              <h2 className="text-lg font-medium text-gray-900">Funding</h2>
+              <h2 className="text-lg font-medium text-slate-100">Funding</h2>
             </CardHeader>
             <CardBody>
               <div className="space-y-4">
                 <div>
-                  <span className="text-sm text-gray-500">Current Round</span>
+                  <span className="text-sm text-slate-400">Current Round</span>
                   <div className="flex items-center mt-1">
                     <DollarSign size={18} className="text-accent-600 mr-1" />
-                    <p className="text-lg font-semibold text-gray-900">
+                    <p className="text-lg font-semibold text-slate-100">
                       {entrepreneur.fundingNeeded}
                     </p>
                   </div>
                 </div>
 
                 <div>
-                  <span className="text-sm text-gray-500">Valuation</span>
-                  <p className="text-md font-medium text-gray-900">
+                  <span className="text-sm text-slate-400">Valuation</span>
+                  <p className="text-md font-medium text-slate-100">
                     $8M - $12M
                   </p>
                 </div>
 
                 <div>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-slate-400">
                     Previous Funding
                   </span>
-                  <p className="text-md font-medium text-gray-900">
+                  <p className="text-md font-medium text-slate-100">
                     $750K Seed (2022)
                   </p>
                 </div>
 
                 <div className="pt-3 border-t border-gray-100">
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-slate-400">
                     Funding Timeline
                   </span>
                   <div className="mt-2 space-y-2">
@@ -350,7 +350,7 @@ export const EntrepreneurProfile: React.FC = () => {
           {/* Documents */}
           <Card>
             <CardHeader>
-              <h2 className="text-lg font-medium text-gray-900">Documents</h2>
+              <h2 className="text-lg font-medium text-slate-100">Documents</h2>
             </CardHeader>
             <CardBody>
               <div className="space-y-3">
@@ -359,10 +359,10 @@ export const EntrepreneurProfile: React.FC = () => {
                     <FileText size={18} className="text-primary-700" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       Pitch Deck
                     </h3>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-slate-500">
                       Updated 2 months ago
                     </p>
                   </div>
@@ -376,10 +376,10 @@ export const EntrepreneurProfile: React.FC = () => {
                     <FileText size={18} className="text-primary-700" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       Business Plan
                     </h3>
-                    <p className="text-xs text-gray-500">Updated 1 month ago</p>
+                    <p className="text-xs text-slate-500">Updated 1 month ago</p>
                   </div>
                   <Button variant="outline" size="sm">
                     View
@@ -391,10 +391,10 @@ export const EntrepreneurProfile: React.FC = () => {
                     <FileText size={18} className="text-primary-700" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-sm font-medium text-slate-100">
                       Financial Projections
                     </h3>
-                    <p className="text-xs text-gray-500">Updated 2 weeks ago</p>
+                    <p className="text-xs text-slate-500">Updated 2 weeks ago</p>
                   </div>
                   <Button variant="outline" size="sm">
                     View
@@ -404,7 +404,7 @@ export const EntrepreneurProfile: React.FC = () => {
 
               {!isCurrentUser && isInvestor && (
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-slate-400">
                     Request access to detailed documents and financials by
                     sending a collaboration request.
                   </p>

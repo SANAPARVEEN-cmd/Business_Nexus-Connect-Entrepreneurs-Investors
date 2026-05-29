@@ -73,8 +73,8 @@ export const CollaborationRequestCard: React.FC<CollaborationRequestCardProps> =
             />
             
             <div>
-              <h3 className="text-md font-semibold text-gray-900">{investor.name}</h3>
-              <p className="text-sm text-gray-500">
+              <h3 className="text-md font-semibold text-slate-100">{investor.name}</h3>
+              <p className="text-sm text-slate-400">
                 {formatDistanceToNow(new Date(request.createdAt), { addSuffix: true })}
               </p>
             </div>
@@ -84,7 +84,7 @@ export const CollaborationRequestCard: React.FC<CollaborationRequestCardProps> =
         </div>
         
         <div className="mt-4">
-          <p className="text-sm text-gray-600">{request.message}</p>
+          <p className="text-sm text-slate-300">{request.message}</p>
         </div>
       </CardBody>
       

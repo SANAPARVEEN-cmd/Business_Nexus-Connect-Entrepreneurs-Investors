@@ -44,8 +44,8 @@ export const InvestorCard: React.FC<InvestorCardProps> = ({
           />
           
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">{investor.name}</h3>
-            <p className="text-sm text-gray-500 mb-2">Investor • {investor.totalInvestments} investments</p>
+            <h3 className="text-lg font-semibold text-slate-100 mb-1">{investor.name}</h3>
+            <p className="text-sm text-slate-400 mb-2">Investor • {investor.totalInvestments} investments</p>
             
             <div className="flex flex-wrap gap-2 mb-3">
               {investor.investmentStage.map((stage, index) => (
@@ -56,7 +56,7 @@ export const InvestorCard: React.FC<InvestorCardProps> = ({
         </div>
         
         <div className="mt-3">
-          <h4 className="text-sm font-medium text-gray-900 mb-1">Investment Interests</h4>
+          <h4 className="text-sm font-medium text-slate-100 mb-1">Investment Interests</h4>
           <div className="flex flex-wrap gap-2">
             {investor.investmentInterests.map((interest, index) => (
               <Badge key={index} variant="primary" size="sm">{interest}</Badge>
@@ -65,13 +65,13 @@ export const InvestorCard: React.FC<InvestorCardProps> = ({
         </div>
         
         <div className="mt-4">
-          <p className="text-sm text-gray-600 line-clamp-2">{investor.bio}</p>
+          <p className="text-sm text-slate-300 line-clamp-2">{investor.bio}</p>
         </div>
         
         <div className="mt-3 flex justify-between items-center">
           <div>
-            <span className="text-xs text-gray-500">Investment Range</span>
-            <p className="text-sm font-medium text-gray-900">{investor.minimumInvestment} - {investor.maximumInvestment}</p>
+            <span className="text-xs text-slate-400">Investment Range</span>
+            <p className="text-sm font-medium text-slate-100">{investor.minimumInvestment} - {investor.maximumInvestment}</p>
           </div>
         </div>
       </CardBody>

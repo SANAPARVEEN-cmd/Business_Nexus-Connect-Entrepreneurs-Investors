@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, Bell, Calendar, TrendingUp, AlertCircle, PlusCircle } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
@@ -14,116 +14,112 @@ import { investors } from '../../data/users';
 export const EntrepreneurDashboard: React.FC = () => {
   const { user } = useAuth();
   const [collaborationRequests, setCollaborationRequests] = useState<CollaborationRequest[]>([]);
-  const [recommendedInvestors, setRecommendedInvestors] = useState(investors.slice(0, 3));
-  
+  const recommendedInvestors = investors.slice(0, 3);
+
   useEffect(() => {
     if (user) {
-      // Load collaboration requests
       const requests = getRequestsForEntrepreneur(user.id);
       setCollaborationRequests(requests);
     }
   }, [user]);
-  
+
   const handleRequestStatusUpdate = (requestId: string, status: 'accepted' | 'rejected') => {
-    setCollaborationRequests(prevRequests => 
-      prevRequests.map(req => 
+    setCollaborationRequests(prevRequests =>
+      prevRequests.map(req =>
         req.id === requestId ? { ...req, status } : req
       )
     );
   };
-  
+
   if (!user) return null;
-  
+
   const pendingRequests = collaborationRequests.filter(req => req.status === 'pending');
-  
+
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome, {user.name}</h1>
-          <p className="text-gray-600">Here's what's happening with your startup today</p>
+          <h1 className="text-3xl font-semibold text-slate-100">Welcome back, {user.name}</h1>
+          <p className="text-slate-400">Track your startup progress, investor interest, and collaborative activity.</p>
         </div>
-        
+
         <Link to="/investors">
-          <Button
-            leftIcon={<PlusCircle size={18} />}
-          >
-            Find Investors
-          </Button>
+          <Button leftIcon={<PlusCircle size={18} />}>Find Investors</Button>
         </Link>
       </div>
-      
-      {/* Summary cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-primary-50 border border-primary-100">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <Card className="glass-panel border border-slate-800/80">
           <CardBody>
-            <div className="flex items-center">
-              <div className="p-3 bg-primary-100 rounded-full mr-4">
-                <Bell size={20} className="text-primary-700" />
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-cyan-500/15 text-cyan-300">
+                <Bell size={24} />
               </div>
               <div>
-                <p className="text-sm font-medium text-primary-700">Pending Requests</p>
-                <h3 className="text-xl font-semibold text-primary-900">{pendingRequests.length}</h3>
+                <p className="text-sm font-semibold text-cyan-200">Pending Requests</p>
+                <h3 className="mt-2 text-3xl font-semibold text-slate-100">{pendingRequests.length}</h3>
               </div>
             </div>
           </CardBody>
         </Card>
-        
-        <Card className="bg-secondary-50 border border-secondary-100">
+
+        <Card className="glass-panel border border-slate-800/80">
           <CardBody>
-            <div className="flex items-center">
-              <div className="p-3 bg-secondary-100 rounded-full mr-4">
-                <Users size={20} className="text-secondary-700" />
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-violet-500/15 text-violet-300">
+                <Users size={24} />
               </div>
               <div>
-                <p className="text-sm font-medium text-secondary-700">Total Connections</p>
-                <h3 className="text-xl font-semibold text-secondary-900">
+                <p className="text-sm font-semibold text-violet-200">Total Connections</p>
+                <h3 className="mt-2 text-3xl font-semibold text-slate-100">
                   {collaborationRequests.filter(req => req.status === 'accepted').length}
                 </h3>
               </div>
             </div>
           </CardBody>
         </Card>
-        
-        <Card className="bg-accent-50 border border-accent-100">
+
+        <Card className="glass-panel border border-slate-800/80">
           <CardBody>
-            <div className="flex items-center">
-              <div className="p-3 bg-accent-100 rounded-full mr-4">
-                <Calendar size={20} className="text-accent-700" />
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-amber-500/15 text-amber-300">
+                <Calendar size={24} />
               </div>
               <div>
-                <p className="text-sm font-medium text-accent-700">Upcoming Meetings</p>
-                <h3 className="text-xl font-semibold text-accent-900">2</h3>
+                <p className="text-sm font-semibold text-amber-200">Upcoming Meetings</p>
+                <h3 className="mt-2 text-3xl font-semibold text-slate-100">2</h3>
               </div>
             </div>
           </CardBody>
         </Card>
-        
-        <Card className="bg-success-50 border border-success-100">
+
+        <Card className="glass-panel border border-slate-800/80">
           <CardBody>
-            <div className="flex items-center">
-              <div className="p-3 bg-green-100 rounded-full mr-4">
-                <TrendingUp size={20} className="text-success-700" />
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-emerald-500/15 text-emerald-300">
+                <TrendingUp size={24} />
               </div>
               <div>
-                <p className="text-sm font-medium text-success-700">Profile Views</p>
-                <h3 className="text-xl font-semibold text-success-900">24</h3>
+                <p className="text-sm font-semibold text-emerald-200">Profile Views</p>
+                <h3 className="mt-2 text-3xl font-semibold text-slate-100">24</h3>
               </div>
             </div>
           </CardBody>
         </Card>
       </div>
-      
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Collaboration requests */}
         <div className="lg:col-span-2 space-y-4">
-          <Card>
-            <CardHeader className="min-h-screen bg-[#0a0f1f] flex items-center justify-center">
-              <h2 className="text-lg font-medium text-gray-900">Collaboration Requests</h2>
-              <Badge variant="warning">{pendingRequests.length} pending</Badge>
+          <Card className="glass-panel border border-slate-800/80">
+            <CardHeader className="flex flex-col gap-4 rounded-[1.75rem] border-b border-slate-800/70 bg-slate-950/80 p-6">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h2 className="text-lg font-semibold text-slate-100">Collaboration Requests</h2>
+                <Badge variant="warning">{pendingRequests.length} pending</Badge>
+              </div>
+              <p className="text-sm text-slate-400">Review investor requests quickly and prioritize the hottest opportunities.</p>
             </CardHeader>
-            
-            <CardBody>
+
+            <CardBody className="space-y-4">
               {collaborationRequests.length > 0 ? (
                 <div className="space-y-4">
                   {collaborationRequests.map(request => (
@@ -135,35 +131,30 @@ export const EntrepreneurDashboard: React.FC = () => {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-8">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 mb-4">
-                    <AlertCircle size={24} className="text-gray-500" />
+                <div className="rounded-[1.75rem] border border-slate-800/70 bg-slate-950/80 p-10 text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-900 text-cyan-300">
+                    <AlertCircle size={24} />
                   </div>
-                  <p className="text-gray-600">No collaboration requests yet</p>
-                  <p className="text-sm text-gray-500 mt-1">When investors are interested in your startup, their requests will appear here</p>
+                  <p className="text-slate-100 font-semibold">No collaboration requests yet</p>
+                  <p className="mt-2 text-sm text-slate-400">Requests from investors will appear here as soon as they express interest.</p>
                 </div>
               )}
             </CardBody>
           </Card>
         </div>
-        
-        {/* Recommended investors */}
+
         <div className="space-y-4">
-          <Card>
-            <CardHeader className="flex justify-between items-center">
-              <h2 className="text-lg font-medium text-gray-900">Recommended Investors</h2>
-              <Link to="/investors" className="text-sm font-medium text-primary-600 hover:text-primary-500">
+          <Card className="glass-panel border border-slate-800/80">
+            <CardHeader className="flex items-center justify-between p-6 bg-slate-950/80 rounded-[1.75rem] border-b border-slate-800/70">
+              <h2 className="text-lg font-semibold text-slate-100">Recommended Investors</h2>
+              <Link to="/investors" className="text-sm font-medium text-cyan-300 hover:text-cyan-200">
                 View all
               </Link>
             </CardHeader>
-            
+
             <CardBody className="space-y-4">
               {recommendedInvestors.map(investor => (
-                <InvestorCard
-                  key={investor.id}
-                  investor={investor}
-                  showActions={false}
-                />
+                <InvestorCard key={investor.id} investor={investor} showActions={false} />
               ))}
             </CardBody>
           </Card>
