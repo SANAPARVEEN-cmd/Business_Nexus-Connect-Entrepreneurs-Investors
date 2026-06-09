@@ -125,6 +125,13 @@ export const getConversationsForUser = (userId: string): ChatConversation[] => {
   }).sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 };
 
+// Get all available users for chatting
+export const getAllChatUsers = (): string[] => {
+  const { entrepreneurs, investors } = require('./users');
+  const allUsers = [...entrepreneurs, ...investors];
+  return allUsers.map((user: any) => user.id);
+};
+
 // Helper function to send a new message
 export const sendMessage = (newMessage: Omit<Message, 'id' | 'timestamp' | 'isRead'>): Message => {
   const message: Message = {

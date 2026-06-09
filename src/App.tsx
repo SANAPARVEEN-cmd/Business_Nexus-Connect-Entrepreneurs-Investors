@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { VideoCallProvider } from './context/VideoCallContext';
 
 // Layouts
 import { DashboardLayout } from './components/layout/DashboardLayout';
@@ -31,10 +32,14 @@ import { CalendarPage } from './pages/calendar/CalendarPage';
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
 
+// Video Call Pages
+import { VideoCallPage } from './pages/videocall/VideoCallPage';
+
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <VideoCallProvider>
+        <Router>
         <Routes>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
@@ -94,6 +99,11 @@ function App() {
             <Route index element={<ChatPage />} />
             <Route path=":userId" element={<ChatPage />} />
           </Route>
+
+          {/* Video Call Routes */}
+          <Route path="/videocall" element={<DashboardLayout />}>
+            <Route path=":userId" element={<VideoCallPage />} />
+          </Route>
           
           {/* Redirect root to login */}
           <Route path="/" element={<Navigate to="/login" replace />} />
@@ -102,6 +112,7 @@ function App() {
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
+      </VideoCallProvider>
     </AuthProvider>
   );
 }

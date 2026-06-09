@@ -48,6 +48,27 @@ export interface ChatConversation {
   updatedAt: string;
 }
 
+export interface VideoCallSession {
+  id: string;
+  initiatorId: string;
+  receiverId: string;
+  status: 'initiating' | 'ringing' | 'active' | 'ended';
+  startTime?: string;
+  endTime?: string;
+  isVideoEnabled: boolean;
+  isAudioEnabled: boolean;
+  duration?: number;
+}
+
+export interface VideoCallState {
+  isCallActive: boolean;
+  isVideoEnabled: boolean;
+  isAudioEnabled: boolean;
+  callDuration: number;
+  callPartner: User | null;
+  session: VideoCallSession | null;
+}
+
 export interface CollaborationRequest {
   id: string;
   investorId: string;

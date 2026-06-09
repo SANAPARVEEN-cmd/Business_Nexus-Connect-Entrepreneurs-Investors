@@ -4,7 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { ChatConversation } from '../../types';
 import { Avatar } from '../ui/Avatar';
 import { Badge } from '../ui/Badge';
-import { findUserById } from '../../data/users';
+import { findUserById, entrepreneurs, investors } from '../../data/users';
 import { useAuth } from '../../context/AuthContext';
 
 interface ChatUserListProps {
@@ -88,9 +88,41 @@ export const ChatUserList: React.FC<ChatUserListProps> = ({ conversations }) => 
               );
             })
           ) : (
-            <div className="px-4 py-8 text-center">
-              <p className="text-sm text-gray-500">No conversations yet</p>
-            </div>
+            // Show all available users if no conversations yet
+            [...entrepreneurs, ...investors]
+              .filter(user => user.id !== currentUser.id)
+              .map(user => {
+                const isActive = activeUserId === user.id;
+                
+                return (
+                  <div
+                    key={user.id}
+                    className={`px-4 py-3 flex cursor-pointer transition-colors duration-200 ${
+                      isActive
+                        ? 'bg-primary-50 border-l-4 border-primary-600'
+                        : 'hover:bg-gray-50 border-l-4 border-transparent'
+                    }`}
+                    onClick={() => handleSelectUser(user.id)}
+                  >
+                    <Avatar
+                      src={user.avatarUrl}
+                      alt={user.name}
+                      size="md"
+                      status={user.isOnline ? 'online' : 'offline'}
+                      className="mr-3 flex-shrink-0"
+                    />
+                    
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-medium text-gray-900 truncate">
+                        {user.name}
+                      </h3>
+                      <p className="text-xs text-gray-500 truncate">
+                        {user.role === 'entrepreneur' ? `${(user as any).startupName}` : 'Investor'}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })
           )}
         </div>
       </div>
