@@ -44,9 +44,11 @@ export const Button: React.FC<ButtonProps> = ({
     select-none
 
     transition-all duration-300 ease-out
-    active:scale-[0.96]
+    active:scale-[0.98]
 
-    focus:outline-none focus:ring-2 focus:ring-offset-0
+    focus:outline-none focus:ring-2 focus:ring-cyan-400/70
+    focus:ring-offset-0 focus-visible:ring-2
+    focus-visible:ring-offset-0
 
     group
   `;

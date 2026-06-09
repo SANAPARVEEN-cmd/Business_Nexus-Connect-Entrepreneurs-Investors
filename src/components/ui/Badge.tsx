@@ -159,7 +159,7 @@ export const Badge: React.FC<BadgeProps> = ({
         </span>
 
         {/* Text */}
-        <span className="relative z-20">
+        <span className="relative z-20 leading-none">
           {children}
         </span>
       </span>

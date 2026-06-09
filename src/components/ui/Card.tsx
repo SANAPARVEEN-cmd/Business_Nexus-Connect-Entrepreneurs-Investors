@@ -24,9 +24,9 @@ export const Card: React.FC<CardProps> = ({
         bg-white/5
         backdrop-blur-xl
 
-        border border-white/10
+        border border-white/10/60
 
-        shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+        shadow-[0_8px_30px_rgba(0,0,0,0.45)]
 
         transition-all duration-300 ease-out
 

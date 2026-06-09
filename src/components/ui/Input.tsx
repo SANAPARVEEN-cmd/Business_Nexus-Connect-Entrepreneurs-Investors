@@ -56,9 +56,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               bg-white/5 backdrop-blur-xl
               border border-white/10
 
-              focus-within:border-cyan-400/40
+              focus-within:border-cyan-400/50
 
-              shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+              shadow-[0_8px_30px_rgba(0,0,0,0.45)]
               transition-all duration-300
             "
           >
